@@ -9,10 +9,9 @@ export class Inventory {
   public addItem (item : Item) : void {
     this.items.push(item);
   }
-  //
-  // public sort() : void {
-  //   this.items.sort();
-  // }
+
+  public sort() : void;
+  public sort(comparator : ItemComparator) : void;
 
   public sort(comparator? : ItemComparator) : void {
     if (comparator) {
