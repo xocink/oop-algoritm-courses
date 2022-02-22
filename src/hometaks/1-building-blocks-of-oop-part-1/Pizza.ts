@@ -28,14 +28,3 @@ export class Pizza extends Consumable {
   }
 
 }
-
-// if (!this.isConsumed() && !this.isSpoiled()){
-//   if (this.sliceEaten < this.numberOfSlice) {
-//     this.sliceEaten += 1
-//     return `You eat the ${this.name}`
-//   }
-//   if (this.sliceEaten >= this.numberOfSlice) {
-//     super.setConsumed(true);
-//   }
-// }
-// return super.use();

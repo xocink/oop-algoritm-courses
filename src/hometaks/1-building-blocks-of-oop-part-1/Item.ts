@@ -21,16 +21,16 @@ export abstract class Item implements Comparable<Item> {
     return counter;
   }
 
+  static reset() {
+    counter = 0;
+  }
+
   public compareTo(other: Item): number {
-    return this.value > other.value ? 1 : -1
+    return this.value - other.value;
   }
 
   public toString(): string {
-    return `${this.name} - Value: ${this.value}, Weight: ${this.weight}`
-  }
-
-  public reset(): void {
-    counter = 0;
+    return `${this.name} - Value: ${this.value}, Weight: ${this.weight.toFixed()}`;
   }
 
   public getId() : number {

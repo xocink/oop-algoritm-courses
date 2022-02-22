@@ -2,16 +2,18 @@
 import {Weapon} from "./Weapon";
 
 export class Sword extends Weapon {
-  constructor(baseDamage : number,baseDurability : number,value : number , weight : number) {
-    super('Sword',baseDamage,baseDurability,value,weight);
+  private instanceDamageModifier: number;
+
+  constructor(baseDamage: number, baseDurability: number, value: number, weight: number) {
+    super('Sword', baseDamage, baseDurability, value, weight);
+    this.instanceDamageModifier = super.getDamageModifier()
   }
 
-  public polish() : void {
+  public polish(): void {
     const modifier = super.getModifier();
-    if ((this.baseDamage * 1.25) > this.curDamage) {
-      this.curDamage *=1+modifier;
-    } else {
-      this.curDamage = this.baseDamage * 1.25;
+    const damageAfterModify = this.curDamage + this.instanceDamageModifier;
+    if ((this.baseDamage * 1.25) > damageAfterModify) {
+      this.instanceDamageModifier += modifier;
     }
   }
 }

@@ -22,7 +22,15 @@ export abstract class Weapon extends Item {
 
   static damageModifier = 0.05;
   static durabilityModifier = 0.05;
-  public static MODIFIER_CHANGE_RATE = 0.05;
+  private static MODIFIER_CHANGE_RATE = 0.05;
+
+  protected getDamageModifier(): number {
+    return Weapon.damageModifier;
+  }
+
+  protected getDurabilityModifier(): number {
+    return Weapon.durabilityModifier;
+  }
 
   protected getDamage(): number {
     return this.curDamage;
@@ -45,10 +53,10 @@ export abstract class Weapon extends Item {
       this.curDurability = this.curDurability - Weapon.MODIFIER_CHANGE_RATE;
 
       if (this.curDurability > 0) {
-        return `You use the ${this.name}, dealing ${this.getDamage()} points of damage.`;
+        return `You use the ${this.name}, dealing ${(this.getDamage()).toFixed(2)} points of damage.`;
 
       } else {
-        return `You use the ${this.name}, dealing ${this.getDamage()} points of damage. The ${this.name} breaks.`;
+        return `You use the ${this.name}, dealing ${(this.getDamage()).toFixed(2)} points of damage. The ${this.name} breaks.`;
       }
     }
   }
